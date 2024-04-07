@@ -4,6 +4,10 @@ title: "course-fish541-2024"
 
 This is a Quarto website.
 
+
+![pic](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Monosnap_2024-04-07_16-49-09.png)
+
+
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
 ```{r}

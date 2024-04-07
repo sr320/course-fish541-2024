@@ -1,17 +1,37 @@
 project:
   type: website
-
+  output-dir: docs
+  
 website:
-  title: "course-fish541-2024"
+  title: "Environmental Physiology Lab"
+  repo-url: https://github.com/sr320/course-FISH546-2024
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+     
+    tools:
+      - icon: github
+        href: https://github.com/sr320/course-FISH546-2024
+      
 
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "Modules"
+        contents:
+          - modules/qc.qmd
+
+      - section: "More"
+        contents:
+          - modules/00-markdown.qmd
+ 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
     css: styles.css
     toc: true
 
