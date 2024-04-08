@@ -2,14 +2,14 @@
   {
     "objectID": "modules/qc.html",
     "href": "modules/qc.html",
-    "title": "Looking at RNA-seq data and quality control",
+    "title": "Data QC",
     "section": "",
     "text": "Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects"
   },
   {
     "objectID": "modules/qc.html#quality-control",
     "href": "modules/qc.html#quality-control",
-    "title": "Looking at RNA-seq data and quality control",
+    "title": "Data QC",
     "section": "Quality Control",
     "text": "Quality Control\nThe first step in analyzing RNA-seq data is to perform quality control checks on the raw fastq files. This step is crucial to ensure that the data is of high quality and can be accurately quantified. One popular tool for quality control is FastQC, which generates various quality metrics such as per-base sequence quality, adapter contamination, and GC content.\nTo perform quality control using FastQC, run the following command:\nfastqc input.fastq\nThis will generate a HTML report that can be viewed in a web browser.\n\nAnother popular quality control program is fastp. Here is a very nice tutorial on using fastp"
   },
