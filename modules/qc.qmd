@@ -2,11 +2,9 @@
 title: "Data QC"
 ---
 
-
 # Reading
 
 -   [Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects](https://d.pr/f/ngmWkw)
-
 
 # Objectives
 
@@ -14,8 +12,13 @@ Learn how to take raw RNA sequence data and perform QC
 
 # Introduction
 
-RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis. In this tutorial, we will use Kallisto, a fast and accurate transcript quantification tool, to analyze RNA-seq data and identify differentially expressed genes.
+RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis.
 
+## Technology
+
+{{< video https://www.youtube.com/watch?v=WKAUtJQ69n8 >}}
+
+{{< video https://www.youtube.com/watch?v=Toa8Im2ySyQ >}}
 
 # Sequence file format
 
@@ -29,8 +32,6 @@ A FASTQ file has four line-separated fields per sequence:
 -   Field 4 encodes the quality values for the sequence in Field 2, and must contain the same number of symbols as letters in the sequence.
 
 https://en.wikipedia.org/wiki/FASTQ_format
-
-
 
 ## Quality Control
 
@@ -47,4 +48,3 @@ This will generate a HTML report that can be viewed in a web browser.
 {{< video https://youtu.be/5LYnq84Pjzk width="400" height="300">}}
 
 Another popular quality control program is `fastp`. [Here](https://sandbox.bio/tutorials?id=fastp-intro) is a very nice tutorial on using `fastp`
-
