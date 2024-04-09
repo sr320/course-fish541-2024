@@ -4,12 +4,18 @@ title: "course-fish541-2024"
 
 This is a Quarto website.
 
-
 ![pic](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Monosnap_2024-04-07_16-49-09.png)
 
+**Use menu at left to access modules and code**
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Stuff to read / review:
 
-```{r}
-1 + 1
-```
+-   Tusk (Things you should know) - <https://robertslab.github.io/tusk/>
+
+-   Lab Handbook - <https://robertslab.github.io/resources/>
+
+-   FISH 546 Bioinformatics for Environmental Sciences
+
+This course teaches core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.
+
+url: <https://sr320.github.io/course-fish546-2023/>

@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "course-fish541-2024",
     "section": "",
-    "text": "This is a Quarto website.\n\n\n\npic\n\n\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nUse menu at left to access modules and code"
   },
   {
     "objectID": "about.html",
@@ -33,5 +33,12 @@
     "title": "Data QC",
     "section": "Technology",
     "text": "Technology"
+  },
+  {
+    "objectID": "index.html#stuff-to-read-review",
+    "href": "index.html#stuff-to-read-review",
+    "title": "course-fish541-2024",
+    "section": "Stuff to read / review:",
+    "text": "Stuff to read / review:\n\nTusk (Things you should know) - https://robertslab.github.io/tusk/\nLab Handbook - https://robertslab.github.io/resources/\nFISH 546 Bioinformatics for Environmental Sciences\n\nThis course teaches core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\nurl: https://sr320.github.io/course-fish546-2023/"
   }
 ]

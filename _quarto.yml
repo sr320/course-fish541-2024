@@ -4,7 +4,7 @@ project:
   
 website:
   title: "Environmental Physiology Lab"
-  repo-url: https://github.com/sr320/course-FISH546-2024
+  repo-url: https://github.com/sr320/course-fish541-2024
   repo-actions: [edit, issue]
   navbar:
     left:
@@ -13,7 +13,7 @@ website:
      
     tools:
       - icon: github
-        href: https://github.com/sr320/course-FISH546-2024
+        href: https://github.com/sr320/course-fish541-2024
       
 
   sidebar:
@@ -23,9 +23,9 @@ website:
         contents:
           - modules/qc.qmd
 
-      - section: "More"
+      - section: "Code"
         contents:
-          - modules/00-markdown.qmd
+          - code/01-data-check.qmd
  
 format:
   html:
