@@ -22,6 +22,7 @@ website:
       - section: "Modules"
         contents:
           - modules/qc.qmd
+          - modules/align.qmd
 
       - section: "Code"
         contents:
