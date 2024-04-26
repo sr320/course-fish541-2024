@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Environmental Physiology Lab - Data QC</title>
+<title>Environmental Physiology Lab - kallisto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/qc.html">Modules</a></li><li class="breadcrumb-item"><a href="../modules/qc.html">Data QC</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/kallisto.html">Code</a></li><li class="breadcrumb-item"><a href="../code/kallisto.html">kallisto</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/qc.html" class="sidebar-item-text sidebar-link active">
+  <a href="../modules/qc.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data QC</span></a>
   </div>
 </li>
@@ -180,13 +180,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/kallisto.html" class="sidebar-item-text sidebar-link">
+  <a href="../code/kallisto.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">kallisto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">code/hisat.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../code/hisat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hisat</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -199,25 +202,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reading" id="toc-reading" class="nav-link active" data-scroll-target="#reading">Reading</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#technology" id="toc-technology" class="nav-link" data-scroll-target="#technology">Technology</a></li>
-  </ul></li>
-  <li><a href="#sequence-file-format" id="toc-sequence-file-format" class="nav-link" data-scroll-target="#sequence-file-format">Sequence file format</a>
-  <ul class="collapse">
-  <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality Control</a></li>
-  </ul></li>
+  <li><a href="#indexing" id="toc-indexing" class="nav-link active" data-scroll-target="#indexing">Indexing</a></li>
+  <li><a href="#quantification" id="toc-quantification" class="nav-link" data-scroll-target="#quantification">Quantification</a></li>
+  <li><a href="#stats" id="toc-stats" class="nav-link" data-scroll-target="#stats">Stats</a></li>
+  <li><a href="#merge-quant-data" id="toc-merge-quant-data" class="nav-link" data-scroll-target="#merge-quant-data">Merge Quant data</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sr320/course-fish541-2024/edit/main/modules/qc.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sr320/course-fish541-2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sr320/course-fish541-2024/edit/main/code/kallisto.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sr320/course-fish541-2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data QC</h1>
+<h1 class="title">kallisto</h1>
 </div>
 
 
@@ -232,47 +229,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="reading" class="level1">
-<h1>Reading</h1>
-<ul>
-<li><a href="https://d.pr/f/ngmWkw">Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects</a></li>
-</ul>
+<p>TLDR</p>
+<section id="indexing" class="level1">
+<h1>Indexing</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/kallisto/kallisto</span> index <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>-i ../data/Phel_transcriptome.index <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>../data/Phel_transcriptome.fa</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
-<p>Learn how to take raw RNA sequence data and perform QC</p>
+<section id="quantification" class="level1">
+<h1>Quantification</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ../output/kallisto_01</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ../data/<span class="pp">*</span>_R1.fastq.gz <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="fu">xargs</span> basename <span class="at">-s</span> _R1.fastq.gz <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-I{}</span> /home/shared/kallisto/kallisto quant <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>-i ../data/Phel_transcriptome.index <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>-o ../output/kallisto_01/{} <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-t 20 <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>--fr-stranded ../data/{}_R1.fastq.gz <span class="dt">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>--rf-stranded ../data/{}_R2.fastq.gz <span class="dt">\</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>2<span class="op">&gt;</span> ../output/kallisto_01/kallisto.out</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+multiqc
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember this can can be used on over 140 program outputs!</p>
+</div>
+</div>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis.</p>
-<section id="technology" class="level2">
-<h2 class="anchored" data-anchor-id="technology">Technology</h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/WKAUtJQ69n8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Toa8Im2ySyQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="stats" class="level1">
+<h1>Stats</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/sam/programs/mambaforge/bin/multiqc</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>../output/kallisto_01/kallisto.out</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">/opt/anaconda/anaconda3/bin/conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> multiqc</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../output/kallisto_01/</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> .</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="sequence-file-format" class="level1">
-<h1>Sequence file format</h1>
-<p>One common sequence product is a large amount of “short-reads”. This often refers to single-end or paired-end reads with a link of ~ 150bp. When data comes off of a sequencer it is often in FASTQ format. This file format contains both sequence and quality informaiton.</p>
-<p>A FASTQ file has four line-separated fields per sequence:</p>
-<ul>
-<li>Field 1 begins with a ‘@’ character and is followed by a sequence identifier and an optional description (like a FASTA title line).</li>
-<li>Field 2 is the raw sequence letters.</li>
-<li>Field 3 begins with a ‘+’ character and is optionally followed by the same sequence identifier (and any description) again.</li>
-<li>Field 4 encodes the quality values for the sequence in Field 2, and must contain the same number of symbols as letters in the sequence.</li>
-</ul>
-<p>https://en.wikipedia.org/wiki/FASTQ_format</p>
-<section id="quality-control" class="level2">
-<h2 class="anchored" data-anchor-id="quality-control">Quality Control</h2>
-<p>The first step in analyzing RNA-seq data is to perform quality control checks on the raw fastq files. This step is crucial to ensure that the data is of high quality and can be accurately quantified. One popular tool for quality control is FastQC, which generates various quality metrics such as per-base sequence quality, adapter contamination, and GC content.</p>
-<p>To perform quality control using FastQC, run the following command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> input.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will generate a HTML report that can be viewed in a web browser.</p>
-<div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/5LYnq84Pjzk" width="400" height="300" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Another popular quality control program is <code>fastp</code>. <a href="https://sandbox.bio/tutorials?id=fastp-intro">Here</a> is a very nice tutorial on using <code>fastp</code></p>
+<section id="merge-quant-data" class="level1">
+<h1>Merge Quant data</h1>
+<p>```{{bash}}</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

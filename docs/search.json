@@ -28,6 +28,13 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "code/kallisto.html",
+    "href": "code/kallisto.html",
+    "title": "kallisto",
+    "section": "",
+    "text": "TLDR\n\nIndexing\n```{bash}\n/home/shared/kallisto/kallisto index \\\n-i ../data/Phel_transcriptome.index \\\n../data/Phel_transcriptome.fa\n```\n\n\nQuantification\n```{bash}\nmkdir ../output/kallisto_01\n\nfind ../data/*_R1.fastq.gz \\\n| xargs basename -s _R1.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto quant \\\n-i ../data/Phel_transcriptome.index \\\n-o ../output/kallisto_01/{} \\\n-t 20 \\\n--fr-stranded ../data/{}_R1.fastq.gz \\\n--rf-stranded ../data/{}_R2.fastq.gz \\\n2&gt; ../output/kallisto_01/kallisto.out\n```\n\n\n\n\n\n\nmultiqc\n\n\n\nRemember this can can be used on over 140 program outputs!\n\n\n\n\nStats\n```{bash}\n/home/sam/programs/mambaforge/bin/multiqc \\\n../output/kallisto_01/kallisto.out\n```\nor\n```{bash}\neval \"$(/opt/anaconda/anaconda3/bin/conda shell.bash hook)\"\nconda activate\nwhich multiqc\n\ncd ../output/kallisto_01/\n\nmultiqc .\n```\n\n\nMerge Quant data\n```{{bash}}"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "course-fish541-2024",

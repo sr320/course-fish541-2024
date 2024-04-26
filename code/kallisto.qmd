@@ -1,0 +1,58 @@
+---
+title: "kallisto"
+---
+
+TLDR
+
+# Indexing
+
+```{{bash}}
+/home/shared/kallisto/kallisto index \
+-i ../data/Phel_transcriptome.index \
+../data/Phel_transcriptome.fa
+```
+
+# Quantification
+
+```{{bash}}
+mkdir ../output/kallisto_01
+
+find ../data/*_R1.fastq.gz \
+| xargs basename -s _R1.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto quant \
+-i ../data/Phel_transcriptome.index \
+-o ../output/kallisto_01/{} \
+-t 20 \
+--fr-stranded ../data/{}_R1.fastq.gz \
+--rf-stranded ../data/{}_R2.fastq.gz \
+2> ../output/kallisto_01/kallisto.out
+```
+
+
+
+# Stats
+
+::: callout-tip
+## multiqc
+Remember this can can be used on over 140 program outputs!
+:::
+
+```{{bash}}
+/home/sam/programs/mambaforge/bin/multiqc \
+../output/kallisto_01/kallisto.out
+```
+
+or
+
+```{{bash}}
+eval "$(/opt/anaconda/anaconda3/bin/conda shell.bash hook)"
+conda activate
+which multiqc
+
+cd ../output/kallisto_01/
+
+multiqc .
+```
+
+# Merge Quant data
+
+
