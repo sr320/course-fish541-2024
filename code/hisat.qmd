@@ -7,14 +7,14 @@ TLDR
 # Genome Prep
 
 
-```{{r, engine='bash'}}
+```{{bash}}
 /home/shared/hisat2-2.2.1/hisat2_extract_exons.py \
 ../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf \
 > ../output/04-Apulcra-hisat/m_exon.tab
 ```
 
 
-```{{r, engine='bash'}}
+```{{bash}}
 /home/shared/hisat2-2.2.1/hisat2_extract_splice_sites.py \
 ../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf \
 > ../output/04-Apulcra-hisat/m_splice_sites.tab
@@ -50,7 +50,7 @@ find /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/*gz \
 
 # convert SAM to BAM
 
-```{bash}
+```{{bash}}
 for file in ../output/*sam; do
     base=$(basename "$file" .sam)
     /home/shared/samtools-1.12/samtools view -@ 40 -bS "$file" | \
@@ -58,3 +58,7 @@ for file in ../output/*sam; do
     -o ../output/"$base".bam
 done
 ```
+
+
+
+# featurecounts

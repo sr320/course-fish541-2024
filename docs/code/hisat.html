@@ -206,6 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#build-index" id="toc-build-index" class="nav-link" data-scroll-target="#build-index">Build Index</a></li>
   <li><a href="#quantification" id="toc-quantification" class="nav-link" data-scroll-target="#quantification">Quantification</a></li>
   <li><a href="#convert-sam-to-bam" id="toc-convert-sam-to-bam" class="nav-link" data-scroll-target="#convert-sam-to-bam">convert SAM to BAM</a></li>
+  <li><a href="#featurecounts" id="toc-featurecounts" class="nav-link" data-scroll-target="#featurecounts">featurecounts</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sr320/course-fish541-2024/edit/main/code/hisat.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sr320/course-fish541-2024/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -232,43 +233,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>TLDR</p>
 <section id="genome-prep" class="level1">
 <h1>Genome Prep</h1>
-<p><code>{{r, engine='bash'}} /home/shared/hisat2-2.2.1/hisat2_extract_exons.py \ ../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf \ &gt; ../output/04-Apulcra-hisat/m_exon.tab</code></p>
-<p><code>{{r, engine='bash'}} /home/shared/hisat2-2.2.1/hisat2_extract_splice_sites.py \ ../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf \ &gt; ../output/04-Apulcra-hisat/m_splice_sites.tab</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/hisat2-2.2.1/hisat2_extract_exons.py</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> ../output/04-Apulcra-hisat/m_exon.tab</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/hisat2-2.2.1/hisat2_extract_splice_sites.py</span> <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> ../output/04-Apulcra-hisat/m_splice_sites.tab</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="build-index" class="level1">
 <h1>Build Index</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/hisat2-2.2.1/hisat2-build</span> <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/GCF_013753865.1_Amil_v2.1_genomic.fna <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>../output/GCF_013753865.1_Amil_v2.1 <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>--exon ../output/04-Apulcra-hisat/m_exon.tab <span class="dt">\</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>--ss ../output/04-Apulcra-hisat/m_splice_sites.tab <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>-p 40 <span class="dt">\</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf <span class="dt">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>2<span class="op">&gt;</span> ../output/04-Apulcra-hisat/hisat2-build_stats.txt</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/hisat2-2.2.1/hisat2-build</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/GCF_013753865.1_Amil_v2.1_genomic.fna <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>../output/GCF_013753865.1_Amil_v2.1 <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>--exon ../output/04-Apulcra-hisat/m_exon.tab <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>--ss ../output/04-Apulcra-hisat/m_splice_sites.tab <span class="dt">\</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>-p 40 <span class="dt">\</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>../data/Amil/ncbi_dataset/data/GCF_013753865.1/genomic.gtf <span class="dt">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>2<span class="op">&gt;</span> ../output/04-Apulcra-hisat/hisat2-build_stats.txt</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="quantification" class="level1">
 <h1>Quantification</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/<span class="pp">*</span>gz <span class="dt">\</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="fu">xargs</span> basename <span class="at">-s</span> _R1_001.fastq.gz <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-I{}</span> <span class="dt">\</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>/home/shared/hisat2-2.2.1/hisat2 <span class="dt">\</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-x /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/output/hisat/GCF_026571515.1_index <span class="dt">\</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>-p 20 <span class="dt">\</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>-1 /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/{}_R1_001.fastq.gz <span class="dt">\</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-2 /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/{}_R2_001.fastq.gz <span class="dt">\</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>-S ../output/{}.sam</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/<span class="pp">*</span>gz <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="fu">xargs</span> basename <span class="at">-s</span> _R1_001.fastq.gz <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-I{}</span> <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>/home/shared/hisat2-2.2.1/hisat2 <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>-x /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/output/hisat/GCF_026571515.1_index <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>-p 20 <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>-1 /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/{}_R1_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>-2 /home/shared/8TB_HDD_02/mewing0/clamgonads-macsamples/data/raw/{}_R2_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>-S ../output/{}.sam</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="convert-sam-to-bam" class="level1">
 <h1>convert SAM to BAM</h1>
-<pre class="{bash}"><code>for file in ../output/*sam; do
-    base=$(basename "$file" .sam)
-    /home/shared/samtools-1.12/samtools view -@ 40 -bS "$file" | \
-    /home/shared/samtools-1.12/samtools sort -@ 40 \
-    -o ../output/"$base".bam
-done</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> ../output/<span class="pp">*</span>sam<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">base</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$file</span><span class="st">"</span> .sam<span class="va">)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/shared/samtools-1.12/samtools</span> view <span class="at">-@</span> 40 <span class="at">-bS</span> <span class="st">"</span><span class="va">$file</span><span class="st">"</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/home/shared/samtools-1.12/samtools</span> sort <span class="at">-@</span> 40 <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> ../output/<span class="st">"</span><span class="va">$base</span><span class="st">"</span>.bam</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="featurecounts" class="level1">
+<h1>featurecounts</h1>
 
 
 </section>
