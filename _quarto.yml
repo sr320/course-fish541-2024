@@ -23,6 +23,7 @@ website:
         contents:
           - modules/qc.qmd
           - modules/align.qmd
+          - modules/blast.qmd
 
       - section: "Code"
         contents:
