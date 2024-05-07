@@ -1,0 +1,43 @@
+---
+title: "Gene Enrichment Analysis"
+subtitle: "Functional Interpretation of High-Throughput Data"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+
+Gene enrichment analysis (GEA) is a powerful statistical technique used in functional genomics to interpret the results of high-throughput experiments like RNA-sequencing (RNA-seq) or microarray analysis. These experiments generate massive datasets that identify genes differentially expressed under specific conditions. However, understanding the biological significance behind these changes can be challenging. GEA helps bridge this gap by leveraging existing knowledge about gene functions.
+
+**Here's how GEA works:**
+
+1. **Identify your differentially expressed genes (DEGs):** Start by identifying a set of genes that are significantly up- or down-regulated based on your experiment. This typically involves applying statistical tests like DESeq2 or EdgeR to your RNA-seq data.
+2. **Choose a gene set library:** Gene set libraries, like Gene Ontology (GO) terms, KEGG pathways, or curated collections based on specific biological processes, provide pre-annotated groups of genes with known functions.
+3. **Perform the enrichment test:** Several statistical tests, like hypergeometric test or Fisher's exact test, are used to assess whether your set of DEGs is over-represented (enriched) in any particular functional category within the chosen gene set library.
+4. **Interpret the results:** Significantly enriched categories suggest a biological process, pathway, or molecular function that is likely affected by the experimental condition.
+
+**Key Considerations for Performing GEA:**
+
+- **Selecting the appropriate gene set library:** Choose a library relevant to your research question. Consider using multiple, complementary libraries to get a broader picture.
+- **Multiple testing correction:** Since you're testing many categories simultaneously, adjust p-values (e.g., using Benjamini-Hochberg correction) to account for false positives.
+- **Background selection:** Define the background gene set against which enrichment is calculated. Often, it's all genes measured in the experiment.
+- **Visualization tools:** Heatmaps, bar plots, and network diagrams help visualize enriched categories and their relationships.
+
+**GEA Software Tools:**
+
+- **Gene Set Enrichment Analysis (GSEA):** A popular tool offering various enrichment tests and visualization capabilities.
+- **WebGestalt:** An online platform offering a user-friendly interface for GEA.
+- **ClusterProfiler (R Package):** A powerful R package for performing GEA and functional annotation.
+
+**By performing GEA, you can:**
+
+- Gain insights into the biological processes underlying your experiment.
+- Generate testable hypotheses for further investigation.
+- Identify novel gene functions based on their association with enriched categories.
+
+Remember, GEA is just the first step. Interpret the results in the context of your biological system and validate your findings with additional experiments for a robust understanding.

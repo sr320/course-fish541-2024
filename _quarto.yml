@@ -24,6 +24,7 @@ website:
           - modules/qc.qmd
           - modules/align.qmd
           - modules/blast.qmd
+          - modules/gea.qmd
 
       - section: "Code"
         contents:
